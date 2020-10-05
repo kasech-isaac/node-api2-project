@@ -61,7 +61,7 @@ router.get("/api/posts", (req, res) => {
 router.get("/api/posts/:id", (req, res)=>{
 db.findById(req.params.id)
 .then(post=>{
- !post || post==" " ? res.status(404).json({ errorMessage: "The post with the specified ID does not exist."})
+ !post || post == "" ? res.status(404).json({ errorMessage: "The post with the specified ID does not exist."})
  : res.status(200).json(post)
 })
 .catch(err=>{
@@ -77,7 +77,7 @@ db.findById(req.params.id)
 router.get("/api/posts/:id/comments", (req, res) => {
   db.findPostComments(req.params.id)
     .then((comment) => {
-      !comment || comment === "" ? res.status(404).json({
+      !comment || comment == "" ? res.status(404).json({
             errorMessage: "The post with the specified ID does not exist." })
             :res.status(200).json(comment);
     })
